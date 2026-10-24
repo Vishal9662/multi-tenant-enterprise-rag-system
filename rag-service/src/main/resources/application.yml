@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: rag-service
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 30MB
+server:
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

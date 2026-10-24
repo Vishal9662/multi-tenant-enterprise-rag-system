@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: context-hub-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: rag-service
+              uri: ${RAG_SERVICE_URL:http://localhost:8081}
+              predicates:
+                - Path=/api/v1/rag/**
+              filters:
+                - StripPrefix=2
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
